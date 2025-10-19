@@ -1,0 +1,34 @@
+{
+  "portafolio": [
+    { "id": 1, "nombre": "HTML", "icono": "FaHtml5" },
+    { "id": 2, "nombre": "CSS", "icono": "FaCss3Alt" },
+    { "id": 3, "nombre": "JavaScript", "icono": "SiJavascript" },
+    { "id": 4, "nombre": "React", "icono": "FaReact" },
+    { "id": 5, "nombre": "Tailwind", "icono": "SiTailwindcss" }
+  ],
+  "backend": [
+    { "id": 6, "nombre": "Node.js", "icono": "FaNodeJs" },
+    { "id": 7, "nombre": "PHP", "icono": "FaPhp" },
+    { "id": 8, "nombre": "CodeIgniter 4", "icono": "FaCogs" },
+    { "id": 9, "nombre": "Laravel", "icono": "SiLaravel" }
+  ],
+  "basesDeDatos": [
+    { "id": 10, "nombre": "SQL", "icono": "FaDatabase" },
+    { "id": 11, "nombre": "MySQL", "icono": "SiMysql" },
+    { "id": 12, "nombre": "SQL Server", "icono": "FaTools" },
+    { "id": 13, "nombre": "PL/SQL", "icono": "FaDatabase" }
+  ],
+  "gestion": [
+    { "id": 14, "nombre": "Office Word", "icono": "FaFileWord" },
+    { "id": 15, "nombre": "Office Excel", "icono": "FaFileExcel" },
+    { "id": 16, "nombre": "Office PowerPoint", "icono": "FaFilePowerpoint" },
+    { "id": 17, "nombre": "Power BI", "icono": "FaTools" },
+    { "id": 18, "nombre": "Bizagi Modeler", "icono": "FaTools" },
+    { "id": 19, "nombre": "Trello", "icono": "SiTrello" }
+  ],
+  "otros": [
+    { "id": 20, "nombre": "Python", "icono": "FaPython" },
+    { "id": 21, "nombre": "Git", "icono": "FaGitAlt" },
+    { "id": 22, "nombre": "GitHub", "icono": "FaGithub" }
+  ]
+}

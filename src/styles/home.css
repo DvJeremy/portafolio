@@ -1,0 +1,87 @@
+.home-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto; /* 👈 centra horizontalmente */
+  padding: 0 1rem;
+  text-align: center;
+  font-family: var(--font-primary);
+}
+
+/* === TÍTULO === */
+.home-title {
+  font-family: var(--font-primary);
+  font-weight: 300;
+  font-size: 4.5rem;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease-out forwards;
+}
+
+.home-title span {
+  font-weight: 400;
+  color: #64ffda;
+}
+
+/* === SUBTÍTULO === */
+.home-subtitle {
+  font-family: var(--font-primary);
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: #d0d0d0;
+  line-height: 1.6;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid #64ffda;
+  width: 0;
+  animation: typing 3.5s steps(40, end) 1s forwards,
+             blink 0.75s step-end infinite;
+}
+
+/* === ANIMACIONES === */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #64ffda;
+  }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .home-title {
+    font-size: 2.5rem;
+  }
+
+  .home-subtitle {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-title {
+    font-size: 2rem;
+  }
+
+  .home-subtitle {
+    font-size: 1rem;
+  }
+}
