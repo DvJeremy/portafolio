@@ -1,12 +1,11 @@
-/* === FONDO ANIMADO PARA TODAS LAS SECCIONES === */
 .section-bg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
   overflow: hidden;
+  z-index: 0;  /* fondo detrás */
 }
 
 .section-bg .stars,
@@ -18,7 +17,6 @@
   height: 100%;
   background-repeat: repeat;
   background-size: contain;
-  z-index: 0;
 }
 
 .section-bg .stars {
@@ -35,27 +33,19 @@
 
 .section-inner {
   position: relative;
-  z-index: 1;
+  z-index: 1;   /* contenido sobre el fondo */
   width: 100%;
-  padding: 20vh 5vw 20vh 4vw; /* top right bottom left */
+  padding: 4vh 0vw 4vh 1vw;
   box-sizing: border-box;
 }
 
-/* === ANIMACIONES === */
+/* Animaciones */
 @keyframes moveStars {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 10000px 10000px;
-  }
+  from { background-position: 0 0; }
+  to { background-position: 10000px 10000px; }
 }
 
 @keyframes twinkle {
-  from {
-    opacity: 0.25;
-  }
-  to {
-    opacity: 0.5;
-  }
+  from { opacity: 0.25; }
+  to { opacity: 0.5; }
 }

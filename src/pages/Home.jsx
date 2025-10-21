@@ -4,7 +4,17 @@ import "../styles/Home.css";
 function Home() {
   return (
     <Section id="home" background="transparent">
-      <div className="home-content">
+      <div
+        className="home-content"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100%", // ocupará toda la altura del Section
+          textAlign: "center",
+        }}
+      >
         <h1 className="home-title animate-fade">
           Hola, soy <span>Jeremy.</span>
         </h1>

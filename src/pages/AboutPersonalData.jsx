@@ -1,5 +1,5 @@
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
-import avatar from '../assets/avatar.jpeg';
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa";
+import AvatarPixel from "../components/AvatarPixel";
 
 function calculateAge(birthday) {
   const birthDate = new Date(birthday);
@@ -59,19 +59,7 @@ export default function PersonalData() {
         alignItems: "center",
       }}>
         {/* Foto circular */}
-        <div style={{
-          width: "250px",
-          height: "250px",
-          borderRadius: "50%",
-          overflow: "hidden",
-          border: "2px solid #00ffea"
-        }}>
-          <img 
-            src={avatar} 
-            alt="Avatar" 
-            style={{ width: "100%", height: "100%", objectFit: "cover" }} 
-          />
-        </div>
+        <AvatarPixel size={250} borderColor="#00ffea" />
 
         {/* Tags de valores alineados horizontalmente y con wrap */}
         <div style={{
@@ -97,6 +85,16 @@ export default function PersonalData() {
 
         {/* Redes sociales */}
         <div style={{ display: "flex", gap: "1rem", marginTop: "1rem" }}>
+          <a
+            href="https://wa.me/925872548"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={iconStyle}
+            onMouseEnter={handleHover}
+            onMouseLeave={handleLeave}
+          >
+            <FaWhatsapp />
+          </a>
           <a href="http://www.linkedin.com/in/bustamante-rojas-jeremy-b029aa252" target="_blank" rel="noopener noreferrer"
             style={iconStyle}
             onMouseEnter={handleHover}

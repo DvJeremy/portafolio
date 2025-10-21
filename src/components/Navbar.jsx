@@ -79,7 +79,7 @@ function Navbar() {
 
     document.getElementById(id)?.scrollIntoView({
       behavior: "smooth",
-      block: "center",
+      block: "start",
     });
 
     setTimeout(() => {

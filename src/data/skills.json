@@ -1,5 +1,5 @@
 {
-  "portafolio": [
+  "frontend": [
     { "id": 1, "nombre": "HTML", "icono": "FaHtml5" },
     { "id": 2, "nombre": "CSS", "icono": "FaCss3Alt" },
     { "id": 3, "nombre": "JavaScript", "icono": "SiJavascript" },
@@ -18,17 +18,22 @@
     { "id": 12, "nombre": "SQL Server", "icono": "FaTools" },
     { "id": 13, "nombre": "PL/SQL", "icono": "FaDatabase" }
   ],
-  "gestion": [
-    { "id": 14, "nombre": "Office Word", "icono": "FaFileWord" },
-    { "id": 15, "nombre": "Office Excel", "icono": "FaFileExcel" },
-    { "id": 16, "nombre": "Office PowerPoint", "icono": "FaFilePowerpoint" },
-    { "id": 17, "nombre": "Power BI", "icono": "FaTools" },
-    { "id": 18, "nombre": "Bizagi Modeler", "icono": "FaTools" },
-    { "id": 19, "nombre": "Trello", "icono": "SiTrello" }
+  "office": [
+    { "id": 14, "nombre": "Word", "icono": "FaFileWord" },
+    { "id": 15, "nombre": "Excel", "icono": "FaFileExcel" },
+    { "id": 16, "nombre": "PowerPoint", "icono": "FaFilePowerpoint" }
   ],
   "otros": [
+    { "id": 17, "nombre": "Power BI", "icono": "FaTools" },
+    { "id": 18, "nombre": "Bizagi Modeler", "icono": "FaTools" },
+    { "id": 19, "nombre": "Trello", "icono": "SiTrello" },
     { "id": 20, "nombre": "Python", "icono": "FaPython" },
     { "id": 21, "nombre": "Git", "icono": "FaGitAlt" },
-    { "id": 22, "nombre": "GitHub", "icono": "FaGithub" }
+    { "id": 22, "nombre": "GitHub", "icono": "FaGithub" },
+    { "id": 24, "nombre": "JSON", "icono": "FaCode" }
+  ],
+  "hosting": [
+    { "id": 23, "nombre": "Yachay", "icono": "FaCloud" }
   ]
+
 }

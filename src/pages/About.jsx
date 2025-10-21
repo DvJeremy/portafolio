@@ -1,5 +1,5 @@
 import Section from "../components/Section";
-import PersonalData from "../components/PersonalData";
+import PersonalData from "./AboutPersonalData";
 import AboutSkills from "./AboutSkills";
 
 export default function About() {
