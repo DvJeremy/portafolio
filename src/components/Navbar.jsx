@@ -6,8 +6,8 @@ import "../styles/Navbar.css"; // 👈 importamos el CSS separado
 const sections = [
   { id: "home", icon: Home },
   { id: "about", icon: User },
-  { id: "skills", icon: Code },
   { id: "projects", icon: Folder },
+  { id: "skills", icon: Code },
 ];
 
 // 🎬 Variants para animación de entrada
