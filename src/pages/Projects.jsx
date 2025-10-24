@@ -22,7 +22,7 @@ function Projects() {
   };
 
   const basePath = import.meta.env.BASE_URL;
-  const projectsWithCorrectImages = projectsData.map(proj => ({
+  const projectsWithImages = projectsData.map(proj => ({
     ...proj,
     imagenes: proj.imagenes.map(img => `${basePath}${img.replace(/^\/+/, '')}`)
   }));
@@ -153,7 +153,10 @@ function Projects() {
                 borderRadius: "0px", // 🔹 sin bordes redondeados
               }}
             >
-              <ImageSlider images={projectsWithCorrectImages.find(p => p.id === proj.id).imagenes} interval={3000} />
+              <ImageSlider 
+                images={projectsWithImages.find(p => p.id === proj.id).imagenes} 
+                interval={3000} 
+              />
             </div>
           </motion.div>
         ))}
