@@ -1,4 +1,6 @@
 import Section from "../components/Section";
+import SectionTitle from "../components/SectionTitle";
+import { FaCode } from "react-icons/fa";
 import ImageSlider from "../components/ImageSlider";
 import projectsData from "../data/projects.json";
 import skillsData from "../data/skills.json";
@@ -21,18 +23,8 @@ function Projects() {
 
   return (
     <Section id="projects" background="#020c1b">
-      <h2
-        style={{
-          color: "#00ffea",
-          fontSize: "2.5rem",
-          fontWeight: 600,
-          textAlign: "center",
-          marginBottom: "4rem",
-          letterSpacing: "-0.5px",
-        }}
-      >
-        Proyectos
-      </h2>
+      
+      <SectionTitle text="Proyectos" icon={<FaCode />} />
 
       <div
         style={{

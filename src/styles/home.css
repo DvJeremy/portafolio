@@ -2,7 +2,7 @@
   position: relative;
   z-index: 2;
   max-width: 800px;
-  margin: 0 auto; /* 👈 centra horizontalmente */
+  margin: 0 auto;
   padding: 0 1rem;
   text-align: center;
   font-family: var(--font-primary);
@@ -32,7 +32,7 @@
   color: #d0d0d0;
   line-height: 1.6;
   overflow: hidden;
-  white-space: nowrap;
+  white-space: nowrap; /* escritorio: línea única */
   border-right: 3px solid #64ffda;
   width: 0;
   animation: typing 3.5s steps(40, end) 1s forwards,
@@ -48,40 +48,30 @@
 }
 
 @keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+  from { width: 0; }
+  to { width: 100%; }
 }
 
 @keyframes blink {
-  from, to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: #64ffda;
-  }
+  from, to { border-color: transparent; }
+  50% { border-color: #64ffda; }
 }
 
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
-  .home-title {
-    font-size: 2.5rem;
-  }
-
-  .home-subtitle {
-    font-size: 1.2rem;
-  }
+  .home-title { font-size: 2.5rem; }
+  .home-subtitle { font-size: 1.2rem; }
 }
 
+/* Móvil: quitar animación de typing, permitir varias líneas */
 @media (max-width: 480px) {
-  .home-title {
-    font-size: 2rem;
-  }
+  .home-title { font-size: 2rem; }
 
   .home-subtitle {
     font-size: 1rem;
+    white-space: pre-wrap; /* permite varias líneas */
+    width: 100%;           /* ocupa todo el ancho */
+    border-right: none;    /* opcional: quitar cursor animado */
+    animation: none;       /* desactivar animación steps */
   }
 }

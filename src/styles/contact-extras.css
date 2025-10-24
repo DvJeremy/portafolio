@@ -1,0 +1,161 @@
+/* ---------- Contact Extras Container ---------- */
+.contact-extras-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(0, 255, 234, 0.05), rgba(0, 200, 179, 0.05));
+  border: 1px solid rgba(0, 255, 234, 0.2);
+  border-radius: 12px;
+}
+
+/* ---------- Title ---------- */
+.extras-title {
+  color: #ccd6f6;
+  font-size: 0.95rem;
+  font-weight: 400;
+  text-align: center;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* Flecha con animación de scroll hacia abajo en bucle continuo */
+.extras-arrow {
+  font-size: 2rem;
+  color: #00ffea;
+  animation: scrollDown 2s ease-in-out infinite;
+}
+
+@keyframes scrollDown {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+}
+
+/* ---------- Contact Items Grid ---------- */
+.contact-items {
+  display: flex;
+  gap: 1.5rem;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ---------- Individual Contact Item ---------- */
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* ---------- Icon Circle - Simplified ---------- */
+.icon-circle {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(0, 255, 234, 0.1), rgba(0, 200, 179, 0.1));
+  border: 2px solid #00ffea;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.icon-circle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle, rgba(0, 255, 234, 0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.contact-item:hover .icon-circle {
+  border-color: #00c8b3;
+  box-shadow: 0 0 20px rgba(0, 255, 234, 0.5), inset 0 0 20px rgba(0, 255, 234, 0.15);
+  background: linear-gradient(135deg, rgba(0, 255, 234, 0.15), rgba(0, 200, 179, 0.15));
+}
+
+.contact-item:hover .icon-circle::before {
+  opacity: 1;
+}
+
+/* ---------- Icon ---------- */
+.contact-icon {
+  font-size: 3.5rem;
+  color: #00ffea;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.contact-item:hover .contact-icon {
+  color: #00c8b3;
+  transform: scale(1.15);
+}
+
+/* ---------- Label ---------- */
+.contact-label {
+  color: #ccd6f6;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 0.3px;
+  transition: color 0.3s ease;
+}
+
+.contact-item:hover .contact-label {
+  color: #00ffea;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  .contact-extras-container {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .contact-items {
+    gap: 1rem;
+  }
+
+  .icon-circle {
+    width: 90px;
+    height: 90px;
+  }
+
+  .contact-icon {
+    font-size: 2.5rem;
+  }
+
+  .contact-label {
+    font-size: 0.8rem;
+  }
+
+  .extras-arrow {
+    font-size: 1.5rem;
+  }
+}

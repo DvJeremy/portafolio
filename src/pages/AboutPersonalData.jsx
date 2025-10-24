@@ -85,16 +85,6 @@ export default function PersonalData() {
 
         {/* Redes sociales */}
         <div style={{ display: "flex", gap: "1rem", marginTop: "1rem" }}>
-          <a
-            href="https://wa.me/925872548"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={iconStyle}
-            onMouseEnter={handleHover}
-            onMouseLeave={handleLeave}
-          >
-            <FaWhatsapp />
-          </a>
           <a href="http://www.linkedin.com/in/bustamante-rojas-jeremy-b029aa252" target="_blank" rel="noopener noreferrer"
             style={iconStyle}
             onMouseEnter={handleHover}
@@ -108,13 +98,6 @@ export default function PersonalData() {
             onMouseLeave={handleLeave}
           >
             <FaGithub />
-          </a>
-          <a href="mailto:jeremy.amazing.it@gmail.com" target="_blank" rel="noopener noreferrer"
-            style={iconStyle}
-            onMouseEnter={handleHover}
-            onMouseLeave={handleLeave}
-          >
-            <FaEnvelope />
           </a>
         </div>
       </div>
@@ -137,7 +120,7 @@ export default function PersonalData() {
 
           <div style={{ display: "flex", alignItems: "center", gap: "1.5rem", fontSize: "0.85rem" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <FaMapMarkerAlt /> Lima - Rímac, Perú
+              <FaMapMarkerAlt /> Lima, Perú
             </div>
             <div>{age} años</div>
           </div>

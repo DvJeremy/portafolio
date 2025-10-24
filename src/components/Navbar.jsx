@@ -7,7 +7,7 @@ const sections = [
   { id: "home", icon: Home },
   { id: "about", icon: User },
   { id: "projects", icon: Folder },
-  { id: "skills", icon: Code },
+  { id: "contact", icon: Code },
 ];
 
 // 🎬 Variants para animación de entrada

@@ -1,0 +1,36 @@
+.contact-content {
+  display: flex;
+  gap: 2rem;       /* separación entre columnas */
+  flex-wrap: nowrap; /* no apilar en escritorio */
+}
+
+.contact-info {
+  flex: 0 0 20%;   /* columna izquierda 15% */
+  display: flex;             /* activa flexbox */
+  flex-direction: column;    /* apila contenido verticalmente */
+  align-items: flex-end;       /* centra horizontalmente */
+  justify-content: center;   /* centra verticalmente */
+  min-height: 300px;         /* opcional, asegura espacio vertical */
+}
+
+.contact-form-column {
+  flex: 0 0 80%;   /* columna derecha 80% */
+  display: flex;             /* centra contenido */
+  align-items: center;       /* vertical */
+  justify-content: center;   /* horizontal */
+  min-height: 300px;         /* opcional, asegura que haya espacio vertical */
+}
+
+/* Responsive: columnas apiladas */
+@media (max-width: 768px) {
+  .contact-content {
+    flex-direction: column;
+  }
+  .contact-info,
+  .contact-form-column {
+    flex: 1 1 100%;
+  }
+  .contact-form-column {
+    min-height: auto;
+  }
+}
