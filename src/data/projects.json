@@ -5,15 +5,15 @@
     "descripcion": "Plataforma empresarial integral que unifica la gestión de Recursos Humanos, Inventarios e Intranet corporativa. Permite administrar personal, controlar inventarios y gestionar procesos internos desde una sola interfaz.",
     "tecnologias": [1, 2, 3, 7, 8, 11, 23],
     "imagenes": [
-      "/portafolio/assets/erp/erp1.png",
-      "/portafolio/assets/erp/erp2.png",
-      "/portafolio/assets/erp/erp3.png",
-      "/portafolio/assets/erp/erp4.png",
-      "/portafolio/assets/erp/erp5.png",
-      "/portafolio/assets/erp/erp6.png",
-      "/portafolio/assets/erp/erp7.png",
-      "/portafolio/assets/erp/erp9.png",
-      "/portafolio/assets/erp/erp8.png"
+      "/assets/erp/erp1.png",
+      "/assets/erp/erp2.png",
+      "/assets/erp/erp3.png",
+      "/assets/erp/erp4.png",
+      "/assets/erp/erp5.png",
+      "/assets/erp/erp6.png",
+      "/assets/erp/erp7.png",
+      "/assets/erp/erp9.png",
+      "/assets/erp/erp8.png"
     ]
   },
   {
@@ -22,12 +22,12 @@
     "descripcion": "Sistema CRM desarrollado para empresas del sector comercial, enfocado en la gestión de clientes, oportunidades de venta y reportes dinámicos. Diseñado para optimizar las relaciones con los clientes y la productividad del equipo.",
     "tecnologias": [1, 2, 3, 7, 8, 11, 23],
     "imagenes": [
-      "/portafolio/assets/crm/crm1.png",
-      "/portafolio/assets/crm/crm2.png",
-      "/portafolio/assets/crm/crm3.png",
-      "/portafolio/assets/crm/crm4.png",
-      "/portafolio/assets/crm/crm5.png",
-      "/portafolio/assets/crm/crm6.png"
+      "/assets/crm/crm1.png",
+      "/assets/crm/crm2.png",
+      "/assets/crm/crm3.png",
+      "/assets/crm/crm4.png",
+      "/assets/crm/crm5.png",
+      "/assets/crm/crm6.png"
     ]
   }
 ]
