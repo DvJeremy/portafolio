@@ -1,29 +1,41 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import skillsData from "../data/skills.json"
 import * as FaIcons from "react-icons/fa"
 import * as SiIcons from "react-icons/si"
 
-// Devuelve el icono según su nombre o uno genérico
 const getIconComponent = (iconName) => FaIcons[iconName] || SiIcons[iconName] || FaIcons.FaTools
 
-// Colores por categoría
 const categoryColors = {
-  frontend: "#F16529",       // naranja HTML
-  backend: "#6CC24A",        // verde Node
-  basesDeDatos: "#FF6F61",   // coral
-  office: "#FFD700",         // dorado
-  otros: "#1DA1F2",          // azul Twitter
-  hosting: "#00C9A7"         // verde agua (nuevo)
+  frontend: "#F16529",
+  backend: "#6CC24A",
+  basesDeDatos: "#FF6F61",
+  office: "#FFD700",
+  otros: "#1DA1F2",
+  hosting: "#00C9A7"
 }
 
 export default function AboutSkills() {
   const [hoverCategory, setHoverCategory] = useState(null)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 480)
+    handleResize()
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
 
   if (!skillsData) return <div>JSON no cargado</div>
 
   const allSkills = Object.entries(skillsData).flatMap(([category, skills]) =>
-    skills.map((skill) => ({ ...skill, category })),
+    skills.map((skill) => ({ ...skill, category }))
   )
+
+  // Mantener tamaño fijo de cards para que no se rompan
+  const cardSize = isMobile ? 80 : 100
+  const iconSize = isMobile ? 1.5 : 2
+  const gridMin = isMobile ? "80px" : "120px"
+  const fontSizeCard = isMobile ? "0.75rem" : "0.85rem"
 
   return (
     <div
@@ -31,16 +43,16 @@ export default function AboutSkills() {
         color: "#ccd6f6",
         border: "2px solid #00ffea",
         borderRadius: "12px",
-        padding: "2rem 1rem",
+        padding: isMobile ? "1rem 0.5rem" : "2rem 1rem",
       }}
     >
       {/* Título */}
-      <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+      <div style={{ textAlign: "center", marginBottom: isMobile ? "1.5rem" : "2.5rem" }}>
         <h2
           style={{
             color: "#00ffea",
             fontWeight: 300,
-            fontSize: "2.5rem",
+            fontSize: isMobile ? "1.8rem" : "2.5rem",
             margin: "0 0 1rem 0",
             textTransform: "uppercase",
             letterSpacing: "2px",
@@ -64,8 +76,8 @@ export default function AboutSkills() {
         style={{
           display: "flex",
           justifyContent: "center",
-          gap: "2rem",
-          marginBottom: "2.5rem",
+          gap: isMobile ? "1rem" : "2rem",
+          marginBottom: isMobile ? "1.5rem" : "2.5rem",
           flexWrap: "wrap",
         }}
       >
@@ -75,7 +87,7 @@ export default function AboutSkills() {
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "0.75rem",
+              gap: "0.5rem",
               opacity: hoverCategory === null || hoverCategory === category ? 1 : 0.3,
               transition: "opacity 0.2s, transform 0.2s",
               transform: hoverCategory === null || hoverCategory === category ? "scale(1)" : "scale(0.95)",
@@ -84,8 +96,8 @@ export default function AboutSkills() {
           >
             <div
               style={{
-                width: "12px",
-                height: "12px",
+                width: "10px",
+                height: "10px",
                 background: color,
                 borderRadius: "2px",
                 boxShadow: `0 0 8px ${color}`,
@@ -94,7 +106,7 @@ export default function AboutSkills() {
             <span
               style={{
                 textTransform: "capitalize",
-                fontSize: "0.95rem",
+                fontSize: isMobile ? "0.85rem" : "0.95rem",
                 fontWeight: 400,
                 letterSpacing: "0.5px",
               }}
@@ -105,15 +117,15 @@ export default function AboutSkills() {
         ))}
       </div>
 
-      {/* Cards de skills */}
+      {/* Cards */}
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
-          gap: "1rem",
+          gridTemplateColumns: `repeat(auto-fit, minmax(${gridMin}, 1fr))`,
+          gap: isMobile ? "0.5rem" : "1rem",
           justifyItems: "center",
-          paddingTop: "1rem",
-          paddingBottom: "1rem",
+          paddingTop: isMobile ? "0.5rem" : "1rem",
+          paddingBottom: isMobile ? "0.5rem" : "1rem",
         }}
       >
         {allSkills.map((skill) => {
@@ -129,23 +141,23 @@ export default function AboutSkills() {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                width: "100px",
-                height: "100px",
+                width: `${cardSize}px`,
+                height: `${cardSize}px`,
                 borderRadius: "12px",
                 background: isHovered ? "rgba(0,255,234,0.1)" : "rgba(0,0,0,0.05)",
                 color: "#ccd6f6",
-                fontSize: "0.85rem",
+                fontSize: fontSizeCard,
                 textAlign: "center",
                 padding: "0.5rem",
                 cursor: "default",
                 transition: "transform 0.2s, box-shadow 0.2s, background 0.2s",
-                transform: isHovered ? "scale(1.05)" : "scale(1)",
-                boxShadow: isHovered ? `0 0 15px ${color}` : "none",
+                transform: !isMobile && isHovered ? "scale(1.05)" : "scale(1)",
+                boxShadow: !isMobile && isHovered ? `0 0 15px ${color}` : "none",
               }}
-              onMouseEnter={() => setHoverCategory(skill.category)}
-              onMouseLeave={() => setHoverCategory(null)}
+              onMouseEnter={!isMobile ? () => setHoverCategory(skill.category) : undefined}
+              onMouseLeave={!isMobile ? () => setHoverCategory(null) : undefined}
             >
-              <Icon style={{ color, fontSize: "2rem", marginBottom: "0.3rem" }} />
+              <Icon style={{ color, fontSize: `${iconSize}rem`, marginBottom: "0.3rem" }} />
               <span>{skill.nombre}</span>
             </div>
           )
