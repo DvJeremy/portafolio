@@ -1,11 +1,12 @@
+import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import { FaDownload } from "react-icons/fa";
+import cvFile from '../assets/file/cv.pdf';
 import { useEffect, useState } from "react";
 
 export default function CVModal({ onClose }) {
   const [isMobile, setIsMobile] = useState(false);
 
-  // Detectar tamaño de pantalla
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 600);
     handleResize();
@@ -13,12 +14,19 @@ export default function CVModal({ onClose }) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Tamaños dinámicos
+  // Bloquear scroll de toda la web
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
   const buttonSize = isMobile ? 35 : 50;
   const iconSize = isMobile ? 1.2 : 1.5;
   const closeFontSize = isMobile ? "1.5rem" : "2rem";
 
-  return (
+  const modalContent = (
     <div
       style={{
         position: "fixed",
@@ -30,7 +38,7 @@ export default function CVModal({ onClose }) {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        zIndex: 1000,
+        zIndex: 9999,
         animation: "fadeIn 0.3s ease",
       }}
     >
@@ -72,7 +80,7 @@ export default function CVModal({ onClose }) {
 
         {/* Botón de descarga CV */}
         <motion.a
-          href="/assets/file/cv.pdf"
+          href={cvFile}
           download
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
@@ -117,7 +125,7 @@ export default function CVModal({ onClose }) {
           }}
         >
           <iframe
-            src="/assets/file/cv.pdf"
+            src={cvFile}
             style={{
               width: "100%",
               height: "100%",
@@ -130,7 +138,6 @@ export default function CVModal({ onClose }) {
         </div>
       </div>
 
-      {/* Animaciones */}
       <style>
         {`
           @keyframes fadeIn {
@@ -145,4 +152,7 @@ export default function CVModal({ onClose }) {
       </style>
     </div>
   );
+
+  // Renderizamos el modal en body
+  return createPortal(modalContent, document.body);
 }
