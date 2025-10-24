@@ -20,6 +20,7 @@ function Projects() {
     if (iconName.startsWith("Si") && SiIcons[iconName]) return SiIcons[iconName];
     return null;
   };
+
   const basePath = import.meta.env.BASE_URL;
   const projectsWithCorrectImages = projectsData.map(proj => ({
     ...proj,
@@ -152,10 +153,7 @@ function Projects() {
                 borderRadius: "0px", // 🔹 sin bordes redondeados
               }}
             >
-              <ImageSlider 
-                images={projectsWithCorrectImages.find(p => p.id === proj.id).imagenes}
-                interval={3000}
-              />
+              <ImageSlider images={projectsWithCorrectImages.find(p => p.id === proj.id).imagenes} interval={3000} />
             </div>
           </motion.div>
         ))}
