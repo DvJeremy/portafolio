@@ -1,0 +1,26 @@
+.personal-data-container {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  border: 2px solid #00ffea;
+  border-radius: 12px;
+  padding: 2rem;
+  box-sizing: border-box;
+  color: #ccd6f6;
+  font-weight: 300;
+}
+
+/* Escritorio: columnas */
+@media (min-width: 769px) {
+  .personal-data-container {
+    flex-direction: row;
+  }
+}
+
+/* Tablet/Móvil: filas */
+@media (max-width: 768px) {
+  .personal-data-container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+}

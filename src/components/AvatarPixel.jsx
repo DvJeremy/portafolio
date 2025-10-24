@@ -1,25 +1,34 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import avatarPixel from "../assets/avatar8bit.jpeg";
 import avatarReal from "../assets/avatar.jpeg";
 
-/**
- * Componente que muestra una imagen pixelada (avatar8bit)
- * y al pasar el mouse realiza un efecto de “despixelado”
- * mostrando la imagen real.
- *
- * Props:
- * - size: tamaño (ej: 250)
- * - borderColor: color del borde
- */
 export default function AvatarPixel({ size = 250, borderColor = "#00ffea" }) {
   const pixelImgRef = useRef(null);
   const realImgRef = useRef(null);
+
+  const [avatarSize, setAvatarSize] = useState(size);
+
+  // Ajusta tamaño en móvil
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 480) {
+        setAvatarSize(size * 0.6); // 60% del tamaño original en móvil
+      } else if (window.innerWidth <= 768) {
+        setAvatarSize(size * 0.8); // 80% para tablet
+      } else {
+        setAvatarSize(size);
+      }
+    };
+
+    handleResize(); // inicial
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [size]);
 
   const handleEnter = () => {
     const pixelImg = pixelImgRef.current;
     const realImg = realImgRef.current;
     if (pixelImg && realImg) {
-      // Despixelar: se desvanece el pixelado y se aclara la imagen real lentamente
       realImg.style.opacity = 1;
       realImg.style.filter = "blur(0px)";
       realImg.style.transform = "scale(1)";
@@ -33,7 +42,6 @@ export default function AvatarPixel({ size = 250, borderColor = "#00ffea" }) {
     const pixelImg = pixelImgRef.current;
     const realImg = realImgRef.current;
     if (pixelImg && realImg) {
-      // Reaparece el pixelado con un efecto suave
       realImg.style.opacity = 0;
       realImg.style.filter = "blur(12px)";
       realImg.style.transform = "scale(1.05)";
@@ -47,8 +55,8 @@ export default function AvatarPixel({ size = 250, borderColor = "#00ffea" }) {
     <div
       style={{
         position: "relative",
-        width: `${size}px`,
-        height: `${size}px`,
+        width: `${avatarSize}px`,
+        height: `${avatarSize}px`,
         borderRadius: "50%",
         overflow: "hidden",
         border: `2px solid ${borderColor}`,
@@ -59,7 +67,6 @@ export default function AvatarPixel({ size = 250, borderColor = "#00ffea" }) {
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
     >
-      {/* Imagen pixelada (visible al inicio) */}
       <img
         ref={pixelImgRef}
         src={avatarPixel}
@@ -77,7 +84,6 @@ export default function AvatarPixel({ size = 250, borderColor = "#00ffea" }) {
         }}
       />
 
-      {/* Imagen real (aparece tras el efecto) */}
       <img
         ref={realImgRef}
         src={avatarReal}
