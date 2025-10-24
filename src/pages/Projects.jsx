@@ -23,128 +23,128 @@ function Projects() {
 
   return (
     <Section id="projects" background="#020c1b">
-      
       <SectionTitle text="Proyectos" icon={<FaCode />} />
 
       <div
         style={{
           display: "flex",
           flexDirection: "column",
-          gap: "3rem",
+          gap: "4rem",
           alignItems: "center",
           color: "#ccd6f6",
           width: "100%",
         }}
       >
-        {projectsData.map((proj, index) => (
+        {projectsData.map((proj) => (
           <motion.div
             key={proj.id}
             style={{
               display: "flex",
-              flexDirection: index % 2 === 0 ? "row" : "row-reverse",
-              alignItems: "stretch",
-              justifyContent: "space-between",
-              gap: "3rem",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "1.8rem",
               border: "1px solid #00ffea40",
-              padding: "2.5rem",
+              padding: "2.5rem 2rem",
               background: "linear-gradient(135deg, #0a192f60 0%, #0f284760 100%)",
-              width: "100%",
-              maxWidth: "1400px",
+              width: "100%", // 🔹 full width total
               boxSizing: "border-box",
               boxShadow: "0 8px 32px rgba(0, 255, 234, 0.05)",
             }}
             whileHover={{
-              scale: 1.01,
+              scale: 1.005,
               boxShadow: "0 12px 48px rgba(0, 255, 234, 0.1)",
             }}
             transition={{ duration: 0.3 }}
           >
-            {/* Left column: text content */}
-            <div
+            {/* Título */}
+            <h3
               style={{
-                flex: "0 0 25%", // 🔹 Reducido de 35% a 25%
-                display: "flex",
-                flexDirection: "column",
-                gap: "1.5rem",
-                minWidth: "250px",
+                color: "#00ffea",
+                fontWeight: 600,
+                fontSize: "1.8rem",
+                margin: 0,
+                letterSpacing: "-0.5px",
+                textAlign: "center",
               }}
             >
-              <h3
-                style={{
-                  color: "#00ffea",
-                  fontWeight: 600,
-                  fontSize: "1.8rem",
-                  margin: 0,
-                  letterSpacing: "-0.5px",
-                }}
-              >
-                {proj.nombre}
-              </h3>
+              {proj.nombre}
+            </h3>
 
+            {/* Descripción */}
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
               <p
                 style={{
                   fontSize: "1rem",
                   lineHeight: "1.8",
-                  textAlign: "left",
+                  textAlign: "center",
                   fontWeight: 400,
                   color: "#b0bec5",
                   margin: 0,
+                  maxWidth: "90%", // 🔹 centrada y con buen margen en pantallas grandes
                 }}
               >
                 {proj.descripcion}
               </p>
-
-              <div
-                style={{
-                  marginTop: "0.5rem",
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: "0.7rem",
-                  alignItems: "center",
-                }}
-              >
-                {getTecnologias(proj.tecnologias).map((tech) => {
-                  const Icon = getIconComponent(tech.icono);
-                  return (
-                    <span
-                      key={tech.id}
-                      style={{
-                        background: "#00ffea15",
-                        color: "#00ffea",
-                        padding: "0.4rem 0.9rem",
-                        fontSize: "0.85rem",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "0.5rem",
-                        border: "1px solid #00ffea30",
-                        fontWeight: 500,
-                        transition: "all 0.2s ease",
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = "#00ffea25";
-                        e.currentTarget.style.borderColor = "#00ffea60";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = "#00ffea15";
-                        e.currentTarget.style.borderColor = "#00ffea30";
-                      }}
-                    >
-                      {Icon && <Icon size={15} />}
-                      {tech.nombre}
-                    </span>
-                  );
-                })}
-              </div>
             </div>
 
-            {/* Right column: image slider */}
+            {/* Skills */}
             <div
               style={{
-                flex: "0 0 75%", // 🔹 Más espacio para el slider
+                marginTop: "0.5rem",
                 display: "flex",
+                flexWrap: "wrap",
+                gap: "0.7rem",
                 justifyContent: "center",
-                alignItems: "center",
-                minWidth: "350px",
+                width: "100%", // 🔹 ocupa todo el ancho
+              }}
+            >
+              {getTecnologias(proj.tecnologias).map((tech) => {
+                const Icon = getIconComponent(tech.icono);
+                return (
+                  <span
+                    key={tech.id}
+                    style={{
+                      background: "#00ffea15",
+                      color: "#00ffea",
+                      padding: "0.4rem 0.9rem",
+                      fontSize: "0.85rem",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                      border: "1px solid #00ffea30",
+                      fontWeight: 500,
+                      borderRadius: "8px",
+                      transition: "all 0.2s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = "#00ffea25";
+                      e.currentTarget.style.borderColor = "#00ffea60";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = "#00ffea15";
+                      e.currentTarget.style.borderColor = "#00ffea30";
+                    }}
+                  >
+                    {Icon && <Icon size={15} />}
+                    {tech.nombre}
+                  </span>
+                );
+              })}
+            </div>
+
+            {/* Slider */}
+            <div
+              style={{
+                width: "100%",
+                marginTop: "1.5rem",
+                overflow: "hidden",
+                borderRadius: "0px", // 🔹 sin bordes redondeados
               }}
             >
               <ImageSlider images={proj.imagenes} interval={3000} />

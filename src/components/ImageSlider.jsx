@@ -14,15 +14,43 @@ export default function ImageSlider({ images = [], interval = 3000 }) {
 
   return (
     <div
+      className="slider-container"
       style={{
         position: "relative",
         width: "100%",
         height: "600px",
         overflow: "hidden",
         boxShadow: "0 0 20px #00ffea30",
-        borderRadius: "12px",
+        borderRadius: "0",
       }}
     >
+      <style>
+        {`
+          /* 🔹 Ajustes responsivos */
+          @media (max-width: 1024px) {
+            .slider-container {
+              height: 400px !important;
+            }
+          }
+
+          @media (max-width: 768px) {
+            .slider-container {
+              height: 260px !important;
+            }
+            .slider-container img {
+              object-fit: contain !important; /* 📱 Evita el zoom en móvil */
+              background: #0a192f; /* Fondo oscuro para rellenar bordes vacíos */
+            }
+          }
+
+          @media (max-width: 480px) {
+            .slider-container {
+              height: 220px !important;
+            }
+          }
+        `}
+      </style>
+
       {/* Imágenes */}
       {images.map((src, i) => (
         <img
@@ -32,7 +60,7 @@ export default function ImageSlider({ images = [], interval = 3000 }) {
           style={{
             width: "100%",
             height: "100%",
-            objectFit: "fill",
+            objectFit: "cover", // 🖥️ Por defecto en desktop
             position: "absolute",
             top: 0,
             left: 0,
@@ -42,7 +70,7 @@ export default function ImageSlider({ images = [], interval = 3000 }) {
         />
       ))}
 
-      {/* 🔘 Indicadores con fondo semitransparente */}
+      {/* 🔘 Indicadores */}
       <div
         style={{
           position: "absolute",
@@ -51,10 +79,10 @@ export default function ImageSlider({ images = [], interval = 3000 }) {
           transform: "translateX(-50%)",
           display: "flex",
           gap: "8px",
-          background: "rgba(0, 0, 0, 0.5)", // Fondo negro translúcido
+          background: "rgba(0, 0, 0, 0.5)",
           padding: "6px 12px",
           borderRadius: "12px",
-          backdropFilter: "blur(4px)", // efecto elegante de desenfoque
+          backdropFilter: "blur(4px)",
         }}
       >
         {images.map((_, i) => (
@@ -62,8 +90,8 @@ export default function ImageSlider({ images = [], interval = 3000 }) {
             key={i}
             onClick={() => goToSlide(i)}
             style={{
-              width: "14px",
-              height: "14px",
+              width: "12px",
+              height: "12px",
               borderRadius: "50%",
               border: "2px solid white",
               background:
